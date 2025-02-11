@@ -1,10 +1,10 @@
 import React from 'react';
-import img from '../../assets/Home.webp'
+import Banner from './Banner';
 
 const Home = () => {
     return (
         <div>
-            <img src={img} />
+           <Banner></Banner>
         </div>
     );
 };

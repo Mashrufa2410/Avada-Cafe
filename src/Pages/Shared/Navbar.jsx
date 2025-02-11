@@ -1,93 +1,53 @@
 import React from "react";
 import Logo from "../../assets/Logo.webp";
-import { FaFacebook, FaInstagram, FaYoutube, FaTimes } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div className="fixed left-0 top-0 h-full w-72 bg-[#272a2e] text-white flex flex-col items-center px-12 py-16 font-[Poppins]">
+    <div className="h-screen w-72 bg-[#121315] text-white flex flex-col items-center px-6 py-[50px]">
       {/* Logo */}
-      <div className="mb-8">
-        <img src={Logo} alt="Cafe Avada" className="w-[100px]" />
+      <div className="mb-12">
+        <img src={Logo} alt="Cafe Avada" className="w-[95px] h-[170px]" />
       </div>
 
       {/* Navigation Links */}
-      <nav className="w-full text-[14px] tracking-wide uppercase">
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            `py-4 block border-b border-gray-700 text-center w-full ${
-              isActive ? "text-yellow-400" : "text-white"
-            }`
-          }
-        >
-          Home
-        </NavLink>
-        <NavLink
-          to="/about"
-          className={({ isActive }) =>
-            `py-4 block border-b border-gray-700 text-center w-full ${
-              isActive ? "text-yellow-400" : "text-white"
-            }`
-          }
-        >
-          About Us
-        </NavLink>
-        <NavLink
-          to="/menu"
-          className={({ isActive }) =>
-            `py-4 block border-b border-gray-700 text-center w-full ${
-              isActive ? "text-yellow-400" : "text-white"
-            }`
-          }
-        >
-          Food & Drink
-        </NavLink>
-        <NavLink
-          to="/story"
-          className={({ isActive }) =>
-            `py-4 block border-b border-gray-700 text-center w-full ${
-              isActive ? "text-yellow-400" : "text-white"
-            }`
-          }
-        >
-          Our Story
-        </NavLink>
-        <NavLink
-          to="/locations"
-          className={({ isActive }) =>
-            `py-4 block border-b border-gray-700 text-center w-full ${
-              isActive ? "text-yellow-400" : "text-white"
-            }`
-          }
-        >
-          Locations
-        </NavLink>
-        <NavLink
-          to="/contact"
-          className={({ isActive }) =>
-            `py-4 block text-center w-full ${
-              isActive ? "text-yellow-400" : "text-white"
-            }`
-          }
-        >
-          Contact
-        </NavLink>
+      <nav className="w-full">
+        {[
+          { to: "/", text: "Home" },
+          { to: "/about", text: "About Us" },
+          { to: "/menu", text: "Food & Drink" },
+          { to: "/story", text: "Our Story" },
+          { to: "/locations", text: "Locations" },
+          { to: "/contact", text: "Contact" },
+        ].map((link) => (
+          <NavLink
+            key={link.to}
+            to={link.to}
+            className={({ isActive }) =>
+              `block py-4 text-center border-t border-gray-700 uppercase font-small tracking-wide transition ${
+                isActive ? "text-[#ad885e]" : "text-gray-400 hover:text-white"
+              }`
+            }
+          >
+            {link.text}
+          </NavLink>
+        ))}
       </nav>
 
+      {/* Divider Line */}
+      <hr className="w-full border-gray-700" />
+
       {/* Social Media Icons */}
-      <div className="flex space-x-4 mt-auto pb-6">
+      <div className="mt-auto flex space-x-5 pb-6">
         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-          <FaFacebook className="text-gray-400 hover:text-white text-xl" />
-        </a>
-        <a href="#" className="cursor-pointer">
-          <FaTimes className="text-gray-400 hover:text-white text-xl" />
+          <FaFacebook className="text-gray-500 hover:text-white text-xl" />
         </a>
         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-          <FaInstagram className="text-gray-400 hover:text-white text-xl" />
+          <FaInstagram className="text-gray-500 hover:text-white text-xl" />
         </a>
         <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-          <FaYoutube className="text-gray-400 hover:text-white text-xl" />
+          <FaYoutube className="text-gray-500 hover:text-white text-xl" />
         </a>
       </div>
     </div>
